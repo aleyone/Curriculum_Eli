@@ -404,7 +404,7 @@ footer{
 
   <section class="side-section">
     <div class="label">Contacto</div>
-    <p class="contact"><a href="tel:+34627734596">627 73 45 96</a><br><a href="mailto:eli.mgv@gmail.com">eli.mgv@gmail.com</a><br><a href="https://linkedin.com/in/eligallardo-igualdad/" target="_blank" rel="noopener">linkedin.com/in/eligallardo-igualdad/</a></p>
+    <p class="contact"><a class="pdf-link pdf-phone" href="tel:+34627734596">627 73 45 96</a><br><a class="pdf-link pdf-email" href="mailto:eli.mgv@gmail.com">eli.mgv@gmail.com</a><br><a class="pdf-link pdf-linkedin" href="https://linkedin.com/in/eligallardo-igualdad/" target="_blank" rel="noopener">linkedin.com/in/eligallardo-igualdad/</a></p>
   </section>
 </aside>
 
@@ -538,6 +538,26 @@ exportButton.addEventListener('click', async () => {
 
     const img = canvas.toDataURL('image/jpeg', 0.98);
     pdf.addImage(img, 'JPEG', x, 0, renderW, renderH, undefined, 'FAST');
+
+    // Restaurar en el PDF los enlaces que se pierden al rasterizar el HTML.
+    // Convertimos las coordenadas reales de cada <a> a milímetros del A4.
+    const cvRect = cv.getBoundingClientRect();
+    const mmPerCssX = renderW / cvRect.width;
+    const mmPerCssY = renderH / cvRect.height;
+
+    cv.querySelectorAll('.pdf-link').forEach(link => {
+      const r = link.getBoundingClientRect();
+      const linkX = x + (r.left - cvRect.left) * mmPerCssX;
+      const linkY = (r.top - cvRect.top) * mmPerCssY;
+      const linkW = r.width * mmPerCssX;
+      const linkH = r.height * mmPerCssY;
+      const href = link.getAttribute('href');
+
+      if (href && linkW > 0 && linkH > 0) {
+        pdf.link(linkX, linkY, linkW, linkH, { url: href });
+      }
+    });
+
     pdf.save('Eli_Gallardo_CV.pdf');
 
   } catch(error) {
