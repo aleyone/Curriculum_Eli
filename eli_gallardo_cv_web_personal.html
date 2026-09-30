@@ -1,0 +1,209 @@
+<!doctype html>
+<html lang="es">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Eli Gallardo · CV profesional</title>
+<style>
+:root{
+  --ink:#182522;--muted:#66716e;--paper:#fbfaf7;--line:#d9d5cd;
+  --green:#526d64;--green-soft:#edf0ed;--rose:#a96862;--rose-soft:#f3e8e5;--side:#f2efe8
+}
+*{box-sizing:border-box}
+body{margin:0;background:#e9ebe8;color:var(--ink);font:14px/1.48 Inter,system-ui,-apple-system,"Segoe UI",sans-serif}
+.cv{width:min(1080px,calc(100% - 28px));margin:24px auto;background:var(--paper);box-shadow:0 15px 45px #18252214}
+.top{height:7px;background:linear-gradient(90deg,var(--green) 0 68%,var(--rose) 68%)}
+header{padding:24px 36px 21px;border-bottom:1px solid var(--line)}
+.meta{display:flex;justify-content:space-between;gap:20px;margin-bottom:14px;color:var(--muted);font-size:10px;text-transform:uppercase;letter-spacing:.14em}
+.hero{display:grid;grid-template-columns:1fr 310px;gap:42px;align-items:end}
+.name{font:500 25px/1 Georgia,serif;margin:0 0 7px}
+.role{font:500 clamp(26px,3.3vw,40px)/1.06 Georgia,serif;letter-spacing:-.025em;margin:0;max-width:720px}
+.intro{margin:0;padding-left:17px;border-left:2px solid var(--rose);font:500 15px/1.42 Georgia,serif}
+.key{display:flex;flex-wrap:wrap;gap:7px 17px;margin-top:16px;color:#4d5956;font-size:11px}
+.key span:not(:last-child):after{content:"·";color:var(--rose);margin-left:17px}
+
+.layout{display:grid;grid-template-columns:250px 1fr}
+aside{background:var(--side);border-right:1px solid var(--line);padding:26px 23px}
+.photo-placeholder{height:255px;border:1px dashed #a9aaa4;background:#e7e8e3;display:grid;place-items:center;text-align:center;color:#777f7c;margin-bottom:25px}
+.photo-placeholder strong{display:block;font:500 17px Georgia,serif;color:var(--ink);margin-bottom:4px}
+.photo-placeholder span{font-size:10px;text-transform:uppercase;letter-spacing:.13em}
+.side-section{padding-bottom:21px;margin-bottom:21px;border-bottom:1px solid #d4d0c7}
+.side-section:last-child{border:0}
+.label{color:var(--rose);font-size:10px;font-weight:800;text-transform:uppercase;letter-spacing:.15em;margin-bottom:8px}
+.degree{font:500 15px/1.3 Georgia,serif;margin:0;color:var(--ink)}
+.side-section p{font-size:11.5px;color:var(--muted);margin:7px 0 0}
+.contact{line-height:1.9}
+
+main{padding:4px 34px 34px}
+.section{padding:24px 0;border-bottom:1px solid var(--line)}
+.section:last-child{border-bottom:0}
+.heading{display:grid;grid-template-columns:42px 1fr;gap:8px;align-items:baseline;margin-bottom:16px}
+.num{font:16px Georgia,serif;color:var(--rose)}
+.heading h2{font:500 24px/1.1 Georgia,serif;margin:0}
+.job-head{display:grid;grid-template-columns:1fr auto;gap:18px}
+.job-head h3{font:500 19px Georgia,serif;margin:0}
+.job-head p,.date{font-size:11.5px;color:var(--muted);margin:4px 0 0}
+.job-copy{margin:13px 0 0;padding:0;list-style:none;display:grid;gap:8px}
+.job-copy li{font-size:12.5px;line-height:1.45;padding-left:15px;position:relative}
+.job-copy li:before{content:"";width:5px;height:5px;background:var(--rose);border-radius:50%;position:absolute;left:0;top:.55em}
+.job-separator{margin:20px 0;border:0;border-top:1px dashed #cbc6bd}
+
+.specialties{display:grid;grid-template-columns:repeat(3,1fr);gap:10px}
+.specialty{padding:14px;border-top:2px solid var(--green);background:var(--green-soft)}
+.specialty:nth-child(2n){border-color:var(--rose);background:var(--rose-soft)}
+.specialty h3{font:500 16px Georgia,serif;margin:0 0 5px}
+.specialty p{font-size:11px;color:var(--muted);margin:0}
+
+.personal-block{padding:16px 18px;border-left:2px solid var(--green);background:#f3f4f1}
+.personal-block h3{font:500 18px Georgia,serif;margin:0 0 7px}
+.personal-block p{font-size:12.5px;margin:0;color:#46524f}
+
+.evidence{display:grid;grid-template-columns:1fr 1fr;gap:12px}
+.evidence article{padding:15px;border:1px solid var(--line)}
+.evidence h3{font:500 17px Georgia,serif;margin:0 0 6px}
+.evidence p{font-size:11.5px;color:var(--muted);margin:0}
+
+.disc{margin-top:12px;border-top:1px dashed #c9c5bc}
+.disc button{width:100%;border:0;background:none;padding:10px 0 0;display:flex;justify-content:space-between;cursor:pointer;text-align:left;font-weight:700;font-size:11.5px}
+.plus{width:22px;height:22px;border:1px solid #b9b5ad;border-radius:50%;display:grid;place-items:center;font-size:16px;transition:.18s}
+.disc button[aria-expanded=true] .plus{transform:rotate(45deg)}
+.panel{padding:10px 0 0;color:#46524f;font-size:11.5px;max-width:760px}
+.panel[hidden]{display:none}
+footer{padding:12px 36px;border-top:1px solid var(--line);display:flex;justify-content:space-between;align-items:center;color:var(--muted);font-size:10px;text-transform:uppercase;letter-spacing:.1em}
+.print{border:0;border-radius:999px;background:var(--ink);color:white;padding:8px 12px;text-transform:none;letter-spacing:0;cursor:pointer}
+
+@media(max-width:760px){
+ .cv{width:100%;margin:0}.hero,.layout{grid-template-columns:1fr}.intro{margin-top:5px}
+ aside{border-right:0;border-bottom:1px solid var(--line);display:grid;grid-template-columns:180px 1fr;gap:18px}
+ .photo-placeholder{height:210px;grid-row:span 2;margin:0}.specialties,.evidence{grid-template-columns:1fr 1fr}
+ main{padding:0 22px 28px}
+}
+@media(max-width:520px){
+ header{padding:20px}.meta{display:block}.meta span{display:block;margin-bottom:3px}.key span{width:100%}.key span:after{display:none!important}
+ aside,.specialties,.evidence{grid-template-columns:1fr}.photo-placeholder{max-width:230px}.job-head{grid-template-columns:1fr}
+}
+@media print{
+ body{background:white}.cv{width:100%;margin:0;box-shadow:none}.disc,.print{display:none}
+ header{padding:16px 25px}.layout{grid-template-columns:215px 1fr}aside{padding:18px}.photo-placeholder{height:210px}
+ main{padding:0 25px 20px}.section{padding:17px 0}.role{font-size:26px}footer{padding:9px 25px}
+}
+</style>
+</head>
+<body>
+<article class="cv">
+<div class="top"></div>
+
+<header>
+  <div class="meta"><span>CV / Plan profesional de igualdad</span><span>Trayectoria profesional · 2021—Actualidad</span></div>
+  <div class="hero">
+    <div>
+      <h1 class="name">Eli Gallardo</h1>
+      <p class="role">Asesora y consultora en Planes de Igualdad, Planes LGTBI y medidas de no discriminación en el entorno laboral</p>
+    </div>
+    <p class="intro">Mi trabajo combina la parte técnica de la igualdad con algo que considero esencial: estar presente cuando hay que explicarla, negociarla y llevarla a la práctica.</p>
+  </div>
+  <div class="key">
+    <span>5 años de experiencia especializada</span>
+    <span>Máster en Igualdad y Género</span>
+    <span>Front office y negociación</span>
+    <span>Seguimiento y evaluación</span>
+  </div>
+</header>
+
+<div class="layout">
+<aside>
+  <div class="photo-placeholder"><div><strong>Fotografía</strong><span>espacio reservado</span></div></div>
+
+  <section class="side-section">
+    <div class="label">Formación principal</div>
+    <p class="degree">Máster Universitario en Igualdad y Género en el Ámbito Público y Privado</p>
+    <p>Universidad Miguel Hernández de Elche · 2020—2021</p>
+  </section>
+
+  <section class="side-section">
+    <div class="label">Contacto</div>
+    <p class="contact">[EMAIL]<br>[TELÉFONO]<br>[LINKEDIN]<br>[UBICACIÓN / DISPONIBILIDAD]</p>
+  </section>
+</aside>
+
+<main>
+<section class="section">
+  <div class="heading"><span class="num">01</span><h2>Experiencia profesional</h2></div>
+
+  <div class="job-head">
+    <div><h3>Igualia · Consultora de Igualdad</h3><p>Consultoría especializada en igualdad, diversidad y no discriminación.</p></div>
+    <span class="date">Mayo 2022 — Actualidad</span>
+  </div>
+
+  <ul class="job-copy">
+    <li>Desarrollo y acompaño Planes de Igualdad, Planes LGTBI y medidas de no discriminación, participando tanto en el trabajo técnico como en su negociación.</li>
+    <li>Trabajo directamente con empresas, RLT, comités de empresa y organizaciones sindicales: explico cuestiones técnicas, resuelvo dudas y acompaño el proceso negociador.</li>
+    <li>El trabajo continúa después de la aprobación: realizo seguimiento y evaluación, elaboro informes y asesoro en acoso laboral, violencias sexuales y protocolos de actuación.</li>
+  </ul>
+
+  <div class="disc">
+    <button aria-expanded="false" aria-controls="detail1"><span>Ver el alcance técnico del puesto</span><span class="plus">+</span></button>
+    <div id="detail1" class="panel" hidden>Diagnóstico y análisis de situación, definición de objetivos, medidas e indicadores, igualdad retributiva, acompañamiento a comisiones negociadoras, implantación, seguimiento y evaluación.</div>
+  </div>
+
+  <hr class="job-separator">
+
+  <div class="job-head">
+    <div><h3>Actividad profesional independiente · Agente de Igualdad</h3><p>Primer periodo de ejercicio profesional especializado en igualdad y género.</p></div>
+    <span class="date">Oct. 2021 — Mayo 2022</span>
+  </div>
+  <ul class="job-copy">
+    <li>Asesoramiento y apoyo técnico en igualdad de trato y oportunidades, consolidando la base profesional que posteriormente desarrollo en consultoría especializada.</li>
+  </ul>
+</section>
+
+<section class="section">
+  <div class="heading"><span class="num">02</span><h2>Áreas en las que trabajo</h2></div>
+  <div class="specialties">
+    <article class="specialty"><h3>Planes de Igualdad</h3><p>Desde el diagnóstico y el diseño hasta la negociación, implantación, seguimiento y evaluación.</p></article>
+    <article class="specialty"><h3>Planes LGTBI y no discriminación</h3><p>Asesoramiento y desarrollo de medidas para trasladar la igualdad de trato al entorno laboral.</p></article>
+    <article class="specialty"><h3>Igualdad retributiva</h3><p>Trabajo técnico vinculado al análisis y la auditoría salarial y retributiva.</p></article>
+    <article class="specialty"><h3>Acoso laboral</h3><p>Formación y experiencia en asesoramiento a empresas y elaboración de protocolos de actuación.</p></article>
+    <article class="specialty"><h3>Violencias sexuales</h3><p>Especial atención a la prevención, el asesoramiento y los procedimientos frente a estas situaciones.</p></article>
+    <article class="specialty"><h3>Seguimiento y evaluación</h3><p>Continuidad de los planes, revisión de medidas y elaboración de informes de evaluación.</p></article>
+  </div>
+</section>
+
+<section class="section">
+  <div class="heading"><span class="num">03</span><h2>Negociar también forma parte del trabajo</h2></div>
+  <div class="personal-block">
+    <h3>No solo elaboro el plan. También estoy en la mesa.</h3>
+    <p>Una parte importante de mi experiencia se ha desarrollado en la interlocución directa con quienes tienen que construir y negociar estos instrumentos. Trabajo con clientes, RLT, comités de empresa y organizaciones sindicales, trasladando el contenido técnico, resolviendo cuestiones y acompañando el proceso para que pueda avanzar.</p>
+  </div>
+</section>
+
+<section class="section">
+  <div class="heading"><span class="num">04</span><h2>El trabajo no termina con la aprobación</h2></div>
+  <div class="personal-block">
+    <h3>Seguimiento, evaluación y continuidad</h3>
+    <p>Realizo el seguimiento de Planes de Igualdad, Planes LGTBI y Planes Antidiscriminación, analizo cómo se están desarrollando las medidas y elaboro informes de evaluación que permiten conocer qué se ha ejecutado, qué necesita revisión y cómo continuar.</p>
+  </div>
+</section>
+
+<section class="section">
+  <div class="heading"><span class="num">05</span><h2>Evidencia profesional</h2></div>
+  <div class="evidence">
+    <article><div class="label">Proyecto</div><h3>Royal Canin</h3><p>Participación profesional en la elaboración de su Plan de Igualdad, con recomendación profesional disponible.</p></article>
+    <article><div class="label">Recomendación recibida</div><h3>Cómo se percibe mi forma de trabajar</h3><p>La recomendación destaca conocimiento, profesionalidad, cercanía, capacidad de resolución, disponibilidad y priorización del proyecto.</p></article>
+  </div>
+</section>
+</main>
+</div>
+
+<footer><span>CV · Plan Profesional de Igualdad · Eli Gallardo</span><button class="print" onclick="window.print()">Imprimir / guardar PDF</button></footer>
+</article>
+
+<script>
+document.querySelectorAll('.disc button').forEach(b=>b.addEventListener('click',()=>{
+ const p=document.getElementById(b.getAttribute('aria-controls'));
+ const open=b.getAttribute('aria-expanded')==='true';
+ b.setAttribute('aria-expanded',String(!open)); p.hidden=open;
+}));
+</script>
+</body>
+</html>
