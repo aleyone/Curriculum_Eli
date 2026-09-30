@@ -365,7 +365,24 @@ footer{
 @media(max-width:760px){.cv-photo{width:180px;margin:0;align-self:start}}
 @media(max-width:520px){.cv-photo{width:min(230px,100%)}}
 </style>
-<style>.contact a{color:inherit;text-decoration:none}.contact a:hover{text-decoration:underline}</style></head>
+<style>.contact a{color:inherit;text-decoration:none}.contact a:hover{text-decoration:underline}</style>
+<style>
+/* Único ajuste móvil: evitar que la frase de presentación desborde */
+@media (max-width:760px){
+  header .hero{
+    display:block !important;
+  }
+  header .intro{
+    width:100% !important;
+    max-width:none !important;
+    margin:18px 0 0 !important;
+    padding-left:15px !important;
+    box-sizing:border-box !important;
+    overflow-wrap:break-word;
+  }
+}
+</style>
+</head>
 <body>
 <article class="cv">
 <div class="top"></div>
